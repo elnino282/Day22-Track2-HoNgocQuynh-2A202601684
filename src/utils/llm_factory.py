@@ -16,7 +16,12 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import config
 
 
-def get_llm(provider: str = None, temperature: float = 0.0):
+def get_llm(
+    provider: str = None,
+    temperature: float = 0.0,
+    request_timeout: float = None,
+    max_retries: int = None,
+):
     """
     Trả về BaseChatModel tương ứng với provider được chọn.
 
@@ -33,6 +38,8 @@ def get_llm(provider: str = None, temperature: float = 0.0):
         ImportError nếu package tương ứng chưa được cài đặt
     """
     provider = (provider or config.PROVIDER).lower()
+    request_timeout = request_timeout or config.REQUEST_TIMEOUT
+    max_retries = config.MAX_RETRIES if max_retries is None else max_retries
 
     if provider == "openai":
         from langchain_openai import ChatOpenAI
@@ -40,6 +47,8 @@ def get_llm(provider: str = None, temperature: float = 0.0):
             "model": config.OPENAI_MODEL,
             "api_key": config.OPENAI_API_KEY,
             "temperature": temperature,
+            "request_timeout": request_timeout,
+            "max_retries": max_retries,
         }
         if config.OPENAI_BASE_URL:
             kwargs["base_url"] = config.OPENAI_BASE_URL
@@ -77,6 +86,8 @@ def get_llm(provider: str = None, temperature: float = 0.0):
             api_key=config.OPENROUTER_API_KEY,
             base_url=config.OPENROUTER_BASE_URL,
             temperature=temperature,
+            request_timeout=request_timeout,
+            max_retries=max_retries,
         )
 
     else:
@@ -86,7 +97,11 @@ def get_llm(provider: str = None, temperature: float = 0.0):
         )
 
 
-def get_embeddings(provider: str = None):
+def get_embeddings(
+    provider: str = None,
+    request_timeout: float = None,
+    max_retries: int = None,
+):
     """
     Trả về Embeddings instance tương ứng với provider được chọn.
 
@@ -104,12 +119,16 @@ def get_embeddings(provider: str = None):
         Embeddings instance sẵn sàng sử dụng
     """
     provider = (provider or config.PROVIDER).lower()
+    request_timeout = request_timeout or config.REQUEST_TIMEOUT
+    max_retries = config.MAX_RETRIES if max_retries is None else max_retries
 
     if provider in ("openai", "openrouter"):
         from langchain_openai import OpenAIEmbeddings
         kwargs = {
             "model": config.OPENAI_EMBEDDING_MODEL,
             "api_key": config.OPENAI_API_KEY,
+            "request_timeout": request_timeout,
+            "max_retries": max_retries,
         }
         if config.OPENAI_BASE_URL:
             kwargs["base_url"] = config.OPENAI_BASE_URL
@@ -129,6 +148,8 @@ def get_embeddings(provider: str = None):
         return OpenAIEmbeddings(
             model=config.OPENAI_EMBEDDING_MODEL,
             api_key=config.OPENAI_API_KEY,
+            request_timeout=request_timeout,
+            max_retries=max_retries,
         )
 
     elif provider == "ollama":

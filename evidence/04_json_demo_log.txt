@@ -1,0 +1,41 @@
+=======================================================
+  Bước 4: Guardrails AI Validators
+=======================================================
+
+=======================================================
+  Demo: JSON Formatting & Repair
+=======================================================
+
+[Case 1] [Valid JSON] ✅ Pass
+  Input:  {"name": "Alice", "age": 30}
+  Output: {"name": "Alice", "age": 30}
+  🔧 JSON đã được sửa thành công
+
+[Case 2] [Markdown fences] ✅ Pass
+  Input:  ```json
+{"name": "Bob"}
+```
+  Output: {
+  "name": "Bob"
+}
+  🔧 JSON đã được sửa thành công
+
+[Case 3] [Single quotes] ✅ Pass
+  Input:  {'name': 'Charlie', 'score': 95}
+  Output: {
+  "name": "Charlie",
+  "score": 95
+}
+  🔧 JSON đã được sửa thành công
+
+[Case 4] [Trailing comma] ✅ Pass
+  Input:  {"key": "value",}
+  Output: {
+  "key": "value"
+}
+
+[Case 5] [Truly invalid] ✅ Pass
+  Input:  This is not JSON at all: ??? {]
+  Output: {"error": "Không thể phân tích JSON", "raw": "This is not JSON at all: ??? {]"}
+
+✅ Bước 4 hoàn thành!

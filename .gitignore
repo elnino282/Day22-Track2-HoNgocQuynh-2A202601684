@@ -26,5 +26,8 @@ env/
 # macOS
 .DS_Store
 
-# Lab outputs (không commit, chỉ nộp evidence/)
-data/ragas_report.json
+# Lab outputs required by the rubric are intentionally committed:
+# data/ragas_report.json and evidence/*
+
+# Restart cache for the expensive RAGAS input-generation phase
+data/ragas_inputs_cache.json

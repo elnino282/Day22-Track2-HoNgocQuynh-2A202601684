@@ -161,6 +161,17 @@ Lab được chia thành 4 nhiệm vụ, mỗi nhiệm vụ 25 điểm (tổng 1
 
 ## Chạy lab
 
+### Trạng thái triển khai
+
+Mã nguồn đã hoàn thiện toàn bộ các phần chấm tự động: RAG/FAISS/LCEL,
+LangSmith tracing, push + pull Prompt Hub, MD5 A/B routing, dataset và bốn
+metric RAGAS, hai custom Guardrails validators, fallback JSON, lưu report và
+`run_all.py`. Chạy regression test offline trước khi gọi API:
+
+```powershell
+& .\venv\Scripts\python.exe -m unittest discover -s tests -v
+```
+
 ### Chạy từng bước riêng lẻ
 
 ```bash
@@ -190,6 +201,41 @@ cd src && python run_all.py
 ```bash
 cd src && python run_all.py --step 3
 ```
+
+### Lệnh PowerShell tạo evidence cho bước 2–4
+
+PowerShell 5.1 thường dùng code page 437/cp1252 và có thể làm vỡ dấu tiếng Việt.
+Launcher dưới đây tự chuyển console, Python và các log sang UTF-8. Chạy từ thư
+mục gốc repository:
+
+```powershell
+# Bước 2: tự lưu evidence/02_ab_routing_log.txt dạng UTF-8
+powershell -ExecutionPolicy Bypass -File .\scripts\run_utf8.ps1 -Step 2
+
+# Bước 3: 100 RAG answers + 4 RAGAS metrics cho mỗi version
+# Script tự tạo data/ragas_report.json và evidence/03_ragas_report.json
+powershell -ExecutionPolicy Bypass -File .\scripts\run_utf8.ps1 -Step 3
+
+# Bước 4: tạo hai log riêng đúng rubric
+powershell -ExecutionPolicy Bypass -File .\scripts\run_utf8.ps1 -Step 4
+```
+
+Task 3 dùng `gpt-4o` theo `OPENAI_MODEL`. Với OpenAI Responses-compatible
+proxy, `answer_relevancy` chạy `strictness=1` để tránh request `n=3` không được
+hỗ trợ. Sau khi tạo đủ 100 RAG outputs, script lưu restart cache tại
+`data/ragas_inputs_cache.json`; cache tự vô hiệu nếu model, prompt, QA hoặc
+knowledge base thay đổi.
+
+Khi cần đọc file trực tiếp trong Windows PowerShell 5.1, luôn chỉ rõ encoding:
+
+```powershell
+Get-Content -Raw -Encoding UTF8 .\Guide.md
+Get-Content -Raw -Encoding UTF8 .\rubric.md
+```
+
+Sau bước 2, chụp Prompt Hub thành `evidence/02_prompt_hub.png`. Sau bước 3,
+chụp bảng so sánh cuối terminal thành `evidence/03_ragas_scores.png`. Không
+dùng ảnh minh họa hoặc report tự điền; evidence phải đến từ lần chạy API thật.
 
 ---
 

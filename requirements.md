@@ -9,24 +9,10 @@ Python 3.10 or higher
 pip install -r requirements.txt
 ```
 
-## requirements.txt
-
-```
-langchain>=0.3.0
-langchain-core>=0.3.0
-langchain-openai>=0.3.0
-langchain-community>=0.3.0
-langchain-text-splitters>=0.3.0
-langsmith>=0.2.0
-openai>=1.0.0
-faiss-cpu>=1.7.0
-ragas>=0.4.0
-guardrails-ai>=0.5.0
-python-dotenv>=1.0.0
-tiktoken>=0.5.0
-datasets>=2.0.0
-numpy>=1.25.0
-```
+`requirements.txt` là nguồn phiên bản duy nhất. Các dependency chính được khóa
+theo major version đã kiểm thử: LangChain 1.x, RAGAS 0.4.x và Guardrails AI
+0.10–0.11.x. Việc khóa major ngăn một lần `pip install` trong tương lai âm thầm
+đổi API của LCEL, RAGAS hoặc custom validators.
 
 ## Package Purposes
 
@@ -58,9 +44,12 @@ numpy>=1.25.0
 - `Guard.use()` accepts validator **instances**, not classes
 - `Guard.validate(text)` is the main entry point
 
-### LangChain 0.3.x
-- Use `ChatOpenAI(api_key=..., base_url=..., model=...)` for custom endpoints
-- Use `OpenAIEmbeddings(api_key=..., base_url=..., model=...)` for custom embedding endpoints
+### LangChain 1.x
+- Dùng `ChatOpenAI(api_key=..., base_url=..., model=...)` cho custom endpoint.
+- Dùng `OpenAIEmbeddings(api_key=..., base_url=..., model=...)` cho embedding endpoint.
+- RAGAS 0.4.3 còn import một VertexAI module tùy chọn đã bị gỡ khỏi
+  `langchain-community` 0.4; `src/utils/ragas_compat.py` cung cấp marker shim chỉ
+  cho type-check này. Lab không gọi VertexAI và các provider chính không bị đổi.
 
 ## Environment Variables
 

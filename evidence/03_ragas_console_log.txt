@@ -1,0 +1,106 @@
+============================================================
+  Bước 3: RAGAS Evaluation
+============================================================
+✅ Config OK  |  Provider: OPENAI  |  Project: day22-ho-ngoc-quynh
+♻️  Đã tải lại 100 RAG outputs từ C:\Users\Quynh Ho\Documents\GitHub\Day22-Track2-2A202601684-HoNgocQuynh\data\ragas_inputs_cache.json
+
+📐 Đang đánh giá RAGAS cho prompt v1 ... (vui lòng chờ ~5-10 phút)
+   Evaluator: gpt-4o | answer_relevancy strictness=1 (proxy-compatible)
+Exception raised in Job[8]: TimeoutError()
+Exception raised in Job[67]: TimeoutError()
+Exception raised in Job[112]: TimeoutError()
+Exception raised in Job[123]: TimeoutError()
+Exception raised in Job[127]: TimeoutError()
+Exception raised in Job[136]: TimeoutError()
+Exception raised in Job[135]: TimeoutError()
+Exception raised in Job[159]: TimeoutError()
+Exception raised in Job[174]: TimeoutError()
+Exception raised in Job[175]: TimeoutError()
+Exception raised in Job[172]: TimeoutError()
+Exception raised in Job[179]: TimeoutError()
+Exception raised in Job[180]: TimeoutError()
+Exception raised in Job[192]: TimeoutError()
+Exception raised in Job[195]: TimeoutError()
+Exception raised in Job[196]: TimeoutError()
+
+📊 Kết quả RAGAS — Prompt V1:
+  faithfulness                  : 0.9345 ⭐
+  answer_relevancy              : 0.9230
+  context_recall                : 1.0000
+  context_precision             : 0.9464
+
+📐 Đang đánh giá RAGAS cho prompt v2 ... (vui lòng chờ ~5-10 phút)
+   Evaluator: gpt-4o | answer_relevancy strictness=1 (proxy-compatible)
+Exception raised in Job[3]: TimeoutError()
+Exception raised in Job[8]: TimeoutError()
+Exception raised in Job[4]: TimeoutError()
+Exception raised in Job[7]: TimeoutError()
+Exception raised in Job[15]: TimeoutError()
+Exception raised in Job[19]: TimeoutError()
+Exception raised in Job[18]: TimeoutError()
+Exception raised in Job[22]: TimeoutError()
+Exception raised in Job[23]: TimeoutError()
+Exception raised in Job[24]: TimeoutError()
+Exception raised in Job[27]: TimeoutError()
+Exception raised in Job[28]: TimeoutError()
+Exception raised in Job[31]: TimeoutError()
+Exception raised in Job[32]: TimeoutError()
+Exception raised in Job[36]: TimeoutError()
+Exception raised in Job[40]: TimeoutError()
+Exception raised in Job[39]: TimeoutError()
+Exception raised in Job[43]: TimeoutError()
+Exception raised in Job[56]: TimeoutError()
+Exception raised in Job[53]: TimeoutError()
+Exception raised in Job[55]: TimeoutError()
+Exception raised in Job[60]: TimeoutError()
+Exception raised in Job[58]: TimeoutError()
+Exception raised in Job[59]: TimeoutError()
+Exception raised in Job[63]: TimeoutError()
+Exception raised in Job[68]: TimeoutError()
+Exception raised in Job[72]: TimeoutError()
+Exception raised in Job[77]: TimeoutError()
+Exception raised in Job[76]: TimeoutError()
+Exception raised in Job[75]: TimeoutError()
+Exception raised in Job[79]: TimeoutError()
+Exception raised in Job[88]: TimeoutError()
+Exception raised in Job[87]: TimeoutError()
+Exception raised in Job[92]: TimeoutError()
+Exception raised in Job[91]: TimeoutError()
+Exception raised in Job[94]: TimeoutError()
+Exception raised in Job[96]: TimeoutError()
+Exception raised in Job[95]: TimeoutError()
+Exception raised in Job[103]: TimeoutError()
+Exception raised in Job[99]: TimeoutError()
+Exception raised in Job[116]: TimeoutError()
+Exception raised in Job[119]: TimeoutError()
+Exception raised in Job[123]: TimeoutError()
+Exception raised in Job[127]: TimeoutError()
+Exception raised in Job[128]: TimeoutError()
+Exception raised in Job[135]: TimeoutError()
+Exception raised in Job[139]: TimeoutError()
+Exception raised in Job[156]: TimeoutError()
+Exception raised in Job[167]: TimeoutError()
+Exception raised in Job[171]: TimeoutError()
+Exception raised in Job[187]: TimeoutError()
+Exception raised in Job[188]: TimeoutError()
+Exception raised in Job[191]: TimeoutError()
+
+📊 Kết quả RAGAS — Prompt V2:
+  faithfulness                  : 0.9206 ⭐
+  answer_relevancy              : 0.9214
+  context_recall                : 1.0000
+  context_precision             : 0.9545
+
+=================================================================
+  Metric                                V1        V2  Winner
+=================================================================
+  faithfulness                      0.9345    0.9206  ← V1
+  answer_relevancy                  0.9230    0.9214  ← V1
+  context_recall                    1.0000    1.0000  ← V2
+  context_precision                 0.9464    0.9545  ← V2
+
+✅ Đạt mục tiêu: faithfulness = 0.9345 ≥ 0.8
+💾 Đã lưu báo cáo vào C:\Users\Quynh Ho\Documents\GitHub\Day22-Track2-2A202601684-HoNgocQuynh\data\ragas_report.json
+💾 Đã sao chép evidence vào C:\Users\Quynh Ho\Documents\GitHub\Day22-Track2-2A202601684-HoNgocQuynh\evidence\03_ragas_report.json
+
+Phân tích: Prompt V1 có điểm trung bình cao hơn. V1 ưu tiên câu trả lời ngắn gọn; V2 buộc câu trả lời nêu evidence và confidence. Cả hai đều cấm dùng kiến thức ngoài context để tối ưu faithfulness.

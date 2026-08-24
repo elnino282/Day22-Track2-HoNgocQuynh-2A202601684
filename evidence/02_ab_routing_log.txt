@@ -1,0 +1,181 @@
+============================================================
+  Bước 2: Prompt Hub & A/B Routing
+============================================================
+✅ Config OK  |  Provider: OPENAI  |  Project: day22-ho-ngoc-quynh
+✅ Prompt 'ho-ngoc-quynh-rag-prompt-v1' đã tồn tại và không thay đổi
+✅ Prompt 'ho-ngoc-quynh-rag-prompt-v2' đã tồn tại và không thay đổi
+↓ Đã pull 'ho-ngoc-quynh-rag-prompt-v1' từ Hub
+↓ Đã pull 'ho-ngoc-quynh-rag-prompt-v2' từ Hub
+🔨 Đang tạo FAISS index từ 107 chunks ...
+✅ FAISS vectorstore đã sẵn sàng.
+🚀 Đang xử lý với tối đa 4 request song song...
+[01/50] [req-0000] [prompt-v2] What are the three main types of machine learning?...
+          A: **Answer:** The three main types of machine learning are supervised learning, unsupervised
+
+[02/50] [req-0001] [prompt-v2] What is overfitting in machine learning?...
+          A: **Answer:** Overfitting in machine learning occurs when a model learns the training data t
+
+[03/50] [req-0002] [prompt-v1] Explain the bias-variance tradeoff....
+          A: The bias-variance tradeoff is a concept in machine learning that involves balancing bias a
+
+[04/50] [req-0003] [prompt-v1] How does regularization prevent overfitting?...
+          A: Regularization prevents overfitting by adding penalty terms to the loss function, discoura
+
+[05/50] [req-0004] [prompt-v2] What is cross-validation?...
+          A: **Answer:**  
+Cross-validation is a model evaluation technique that provides a more reliab
+
+[06/50] [req-0005] [prompt-v2] What is backpropagation?...
+          A: ### Answer:
+Backpropagation is the core algorithm for training neural networks. It compute
+
+[07/50] [req-0006] [prompt-v2] What are Convolutional Neural Networks primarily used f...
+          A: **Answer:** Convolutional Neural Networks (CNNs) are primarily used for image classificati
+
+[08/50] [req-0007] [prompt-v2] How do LSTM networks address the vanishing gradient pro...
+          A: **Answer:** LSTM networks address the vanishing gradient problem by using gating mechanism
+
+[09/50] [req-0008] [prompt-v1] What activation functions are commonly used in neural n...
+          A: Commonly used activation functions in neural networks include ReLU, sigmoid, tanh, Leaky R
+
+[10/50] [req-0009] [prompt-v2] What is the role of pooling layers in CNNs?...
+          A: **Answer:** The role of pooling layers in CNNs is to perform spatial downsampling, reducin
+
+[11/50] [req-0010] [prompt-v1] What is the transformer architecture?...
+          A: The transformer architecture is a deep learning model introduced in "Attention Is All You 
+
+[12/50] [req-0011] [prompt-v1] What are word embeddings?...
+          A: Word embeddings are dense vector representations of words that capture semantic meaning, w
+
+[13/50] [req-0012] [prompt-v2] What is transfer learning in NLP?...
+          A: **Answer:** Transfer learning in NLP involves pre-training large models on massive corpora
+
+[14/50] [req-0013] [prompt-v1] How does BERT handle language understanding?...
+          A: BERT handles language understanding by using bidirectional transformer training, which all
+
+[15/50] [req-0014] [prompt-v2] What is self-attention in transformers?...
+          A: **Answer:**  
+Self-attention in transformers is a mechanism that computes a weighted sum o
+
+[16/50] [req-0015] [prompt-v1] What is GPT and how is it trained?...
+          A: GPT (Generative Pre-trained Transformer) is a family of autoregressive language models dev
+
+[17/50] [req-0016] [prompt-v2] What is instruction tuning?...
+          A: ### Answer:
+Instruction tuning is a supervised fine-tuning technique used to make large la
+
+[18/50] [req-0017] [prompt-v2] What is RLHF?...
+          A: **Answer:** Reinforcement Learning from Human Feedback (RLHF) is a technique used to align
+
+[19/50] [req-0018] [prompt-v1] What is chain-of-thought prompting?...
+          A: Chain-of-thought prompting is a technique that improves reasoning in large language models
+
+[20/50] [req-0019] [prompt-v2] What is the context length of GPT-4?...
+          A: **Answer:** The context length of GPT-4 is up to 128K tokens.
+
+**Evidence:** The provided 
+
+[21/50] [req-0020] [prompt-v1] What is Retrieval-Augmented Generation?...
+          A: Retrieval-Augmented Generation (RAG) is an approach that combines generative language mode
+
+[22/50] [req-0021] [prompt-v1] What are the main components of a RAG pipeline?...
+          A: The main components of a RAG pipeline are a retriever that searches a document store and a
+
+[23/50] [req-0022] [prompt-v2] What is dense retrieval?...
+          A: ### Answer:
+Dense retrieval is a neural approach to document retrieval that uses neural em
+
+[24/50] [req-0023] [prompt-v1] Why is chunking strategy important in RAG?...
+          A: Chunking strategy is important in RAG because it impacts retrieval precision and how well 
+
+[25/50] [req-0024] [prompt-v2] What advanced RAG techniques exist beyond basic retriev...
+          A: **Answer:** Advanced RAG techniques beyond basic retrieval include re-ranking, query expan
+
+[26/50] [req-0025] [prompt-v1] What are vector databases used for?...
+          A: Vector databases are used for storing and querying high-dimensional vector embeddings to e
+
+[27/50] [req-0026] [prompt-v2] What is FAISS?...
+          A: **Answer:** FAISS (Facebook AI Similarity Search) is a library developed by Meta AI Resear
+
+[28/50] [req-0027] [prompt-v2] How do text embeddings capture semantic meaning?...
+          A: **Answer:** Text embeddings capture semantic meaning by converting text into numerical vec
+
+[29/50] [req-0028] [prompt-v2] What is HNSW?...
+          A: ### Answer:
+HNSW (Hierarchical Navigable Small World) is a graph-based algorithm designed 
+
+[30/50] [req-0029] [prompt-v2] What is hybrid search in vector databases?...
+          A: **Answer:** Hybrid search in vector databases is a method that combines dense vector searc
+
+[31/50] [req-0030] [prompt-v2] What is LangChain?...
+          A: ### Answer:
+LangChain is an open-source framework designed to simplify the development of 
+
+[32/50] [req-0031] [prompt-v2] What is LangChain Expression Language (LCEL)?...
+          A: ### Answer:
+LangChain Expression Language (LCEL) is a declarative syntax for composing Lan
+
+[33/50] [req-0032] [prompt-v1] What is LangGraph?...
+          A: LangGraph is an extension of LangChain for building stateful, multi-actor applications as 
+
+[34/50] [req-0033] [prompt-v2] What memory types does LangChain support?...
+          A: **Answer:** LangChain supports ConversationBufferMemory, ConversationSummaryMemory, Conver
+
+[35/50] [req-0034] [prompt-v1] What are LangChain retrievers?...
+          A: LangChain retrievers are components that fetch relevant documents from a data source given
+
+[36/50] [req-0035] [prompt-v2] What is LangSmith?...
+          A: ### Answer:
+LangSmith is a developer platform designed for building production-grade LLM (
+
+[37/50] [req-0036] [prompt-v2] What information do LangSmith traces capture?...
+          A: **Answer:**  
+LangSmith traces capture inputs, outputs, latency, token usage, and errors f
+
+[38/50] [req-0037] [prompt-v1] What is the LangSmith Prompt Hub?...
+          A: The LangSmith Prompt Hub is a centralized repository for storing, versioning, and sharing 
+
+[39/50] [req-0038] [prompt-v2] How does LangSmith help monitor production LLM applicat...
+          A: ### Answer:
+LangSmith helps monitor production LLM applications by providing detailed tele
+
+[40/50] [req-0039] [prompt-v2] What are LangSmith datasets used for?...
+          A: **Answer:** LangSmith datasets are used for systematic evaluation of LLM applications by c
+
+[41/50] [req-0040] [prompt-v2] What is RAGAS?...
+          A: **Answer:**  
+RAGAS is an open-source framework designed to evaluate Retrieval-Augmented G
+
+[42/50] [req-0041] [prompt-v1] How does RAGAS compute faithfulness?...
+          A: RAGAS computes faithfulness by extracting claims from the answer, decomposing them into at
+
+[43/50] [req-0042] [prompt-v2] What is answer relevancy in RAGAS?...
+          A: ### Answer:
+Answer relevancy in RAGAS measures how well the generated answer addresses the
+
+[44/50] [req-0043] [prompt-v2] What is context recall in RAGAS?...
+          A: ### Answer:
+Context recall in RAGAS measures how thoroughly the retrieved passages cover t
+
+[45/50] [req-0044] [prompt-v1] What inputs does RAGAS evaluation require?...
+          A: RAGAS evaluation requires the following inputs: user queries, generated answers, retrieved
+
+[46/50] [req-0045] [prompt-v2] What is Guardrails AI?...
+          A: ### Answer:
+Guardrails AI is an open-source framework for adding validation and safety che
+
+[47/50] [req-0046] [prompt-v1] What is PII and why is it important to detect in LLM re...
+          A: PII (Personally Identifiable Information) includes data such as names, email addresses, ph
+
+[48/50] [req-0047] [prompt-v1] What does structured output validation ensure?...
+          A: Structured output validation ensures that LLM responses conform to expected data formats a
+
+[49/50] [req-0048] [prompt-v2] What is Constitutional AI?...
+          A: **Answer:** Constitutional AI is an approach to aligning language models with ethical prin
+
+[50/50] [req-0049] [prompt-v2] What are common AI safety concerns with LLMs?...
+          A: **Answer:** Common AI safety concerns with LLMs include hallucination, toxicity, bias, PII
+
+
+📊 Routing: V1=19 câu | V2=31 câu | Tổng=50
+✅ Bước 2 hoàn thành! Kiểm tra Prompt Hub và traces trên LangSmith.

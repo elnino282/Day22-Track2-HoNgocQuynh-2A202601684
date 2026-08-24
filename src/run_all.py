@@ -13,6 +13,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+from utils.console import configure_utf8_console
+
+configure_utf8_console()
 
 STEPS = {
     1: ("Bước 1: LangSmith RAG Pipeline",   "01_langsmith_rag_pipeline"),
