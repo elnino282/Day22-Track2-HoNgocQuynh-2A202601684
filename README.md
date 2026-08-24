@@ -172,6 +172,31 @@ metric RAGAS, hai custom Guardrails validators, fallback JSON, lưu report và
 & .\venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
+### Kết quả đã xác minh
+
+| Hạng mục | Kết quả |
+|---|---|
+| Regression tests | 11/11 tests pass offline |
+| LangSmith Step 1 | 54 root traces `rag-query`; 53 có đủ input + output |
+| LangSmith Step 2 | 50 root traces `ab-rag-query`; không có lỗi |
+| Prompt Hub | Cả V1 và V2 đều tồn tại và pull được từ Hub |
+| A/B routing | 50 câu: V1 = 19, V2 = 31; routing theo MD5 tất định |
+| RAGAS V1 | faithfulness 0.9345; answer relevancy 0.9230; context recall 1.0000; context precision 0.9464 |
+| RAGAS V2 | faithfulness 0.9206; answer relevancy 0.9214; context recall 1.0000; context precision 0.9545 |
+| Guardrails | 6 PII cases và 5 JSON cases chạy thành công |
+| Bảo mật | `.env` bị Git ignore; không commit API key |
+
+Báo cáo RAGAS chính thức nằm tại `data/ragas_report.json`; bản sao nộp bài ở
+`evidence/03_ragas_report.json`. Không chỉnh tay các giá trị điểm trong hai tệp
+này. Kiểm tra LangSmith ở chế độ chỉ đọc bằng:
+
+```powershell
+& .\venv\Scripts\python.exe .\scripts\audit_langsmith.py
+```
+
+Ba ảnh PNG trong checklist evidence đã được bổ sung bằng ảnh chụp thật từ
+LangSmith và terminal. Không thay ảnh bằng file log hoặc ảnh minh họa.
+
 ### Chạy từng bước riêng lẻ
 
 ```bash
@@ -241,6 +266,13 @@ dùng ảnh minh họa hoặc report tự điền; evidence phải đến từ l
 
 ## Nộp bài
 
+Repository public:
+[github.com/elnino282/Day22-Track2-HoNgocQuynh-2A202601684](https://github.com/elnino282/Day22-Track2-HoNgocQuynh-2A202601684)
+
+LangSmith project: `day22-ho-ngoc-quynh`. Trước khi nộp, bật chế độ chia sẻ
+công khai của project và gửi **URL share công khai**, không gửi URL dashboard
+chỉ hoạt động trong phiên đăng nhập cá nhân.
+
 ### 1. Tạo GitHub repository
 
 Tạo repository public mới trên GitHub với tên ví dụ `day22-langsmith-lab`.
@@ -259,6 +291,10 @@ evidence/
 ├── 04_pii_demo_log.txt          ← Output console của PII detector
 └── 04_json_demo_log.txt         ← Output console của JSON formatter
 ```
+
+Ba tệp PNG đã có trong repository. Nếu cần chụp lại
+`01_langsmith_traces.png`, nên lọc root run theo tên `rag-query`; không chỉ
+chụp 100 run mới nhất vì các run RAGAS có thể che khuất trace của Bước 1.
 
 ### 3. Lưu output console vào tệp
 
